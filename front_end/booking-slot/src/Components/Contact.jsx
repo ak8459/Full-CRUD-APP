@@ -57,7 +57,7 @@ const Contact = () => {
         //     },
         //     body: JSON.stringify(userData)
         // })
-        fetch("http://localhost:8080/contact/users").then((res) => {
+        fetch("https://server-api-hofo.onrender.com/contact/users").then((res) => {
             return res.json()
         }).then((res) => {
             console.log(res)
