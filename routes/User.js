@@ -70,9 +70,9 @@ UserRouter.patch('/update/:id', async (req, res) => {
     }
 })
 
-UserRouter.get('/my', async (req, res) => {
-    res.send("kash")
-})
+ UserRouter.post("/appointment", async (req, res) => {
+     
+ })
 
 
 
