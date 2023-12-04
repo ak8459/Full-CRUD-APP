@@ -58,7 +58,7 @@ UserRouter.delete('/delete/:id', async (req, res) => {
 
 UserRouter.patch('/update/:id', async (req, res) => {
     const { id } = req.params
-    const { name, email, phone, label, booked_slots } = req.body
+    const {  booked_slots } = req.body
     try {
         const user = await User.findByIdAndUpdate(id, {
             ...req.body,
@@ -68,6 +68,10 @@ UserRouter.patch('/update/:id', async (req, res) => {
     } catch (error) {
         return res.status(500).send({ message: 'Something went wrong' })
     }
+})
+
+UserRouter.get('/my', async (req, res) => {
+    res.send("kash")
 })
 
 
