@@ -7,20 +7,20 @@ const UserRouter = express.Router();
 UserRouter.post('/', async (req, res) => {
     const { name, email, phone, label, booked_slots } = req.body
     try {
+            res.status(200).send({ message: 'User created successfully' })
+        // const user = await User.findOne({ email })
+        // if (user) {
+        //     return res.status(400).send({ message: 'User already exists' })
+        // }
 
-        const user = await User.findOne({ email })
-        if (user) {
-            return res.status(400).send({ message: 'User already exists' })
-        }
-
-        const newUser = new User({
-            name,
-            email,
-            phone,
-            label,
-            booked_slots
-        })
-        await newUser.save()
+        // const newUser = new User({
+        //     name,
+        //     email,
+        //     phone,
+        //     label,
+        //     booked_slots
+        // })
+        // await newUser.save()
 
         res.status(200).send({ message: 'User created successfully' })
     } catch (error) {
