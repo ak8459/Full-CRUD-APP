@@ -7,20 +7,20 @@ const UserRouter = express.Router();
 UserRouter.post('/', async (req, res) => {
     const { name, email, phone, label, booked_slots } = req.body
     try {
-            res.status(200).send({ message: 'User created successfully' })
-        // const user = await User.findOne({ email })
-        // if (user) {
-        //     return res.status(400).send({ message: 'User already exists' })
-        // }
 
-        // const newUser = new User({
-        //     name,
-        //     email,
-        //     phone,
-        //     label,
-        //     booked_slots
-        // })
-        // await newUser.save()
+        const user = await User.findOne({ email })
+        if (user) {
+            return res.status(400).send({ message: 'User already exists' })
+        }
+
+        const newUser = new User({
+            name,
+            email,
+            phone,
+            label,
+            booked_slots
+        })
+        await newUser.save()
 
         res.status(200).send({ message: 'User created successfully' })
     } catch (error) {
@@ -35,9 +35,9 @@ UserRouter.post('/', async (req, res) => {
 // get all users
 UserRouter.get('/users', async (req, res) => {
     try {
-        // const users = await User.find()
-        // res.status(200).send(users)
-        res.send({ message: 'User created successfully' })
+        const users = await User.find()
+        res.status(200).send(users)
+
     } catch (error) {
         return res.status(500).send({ message: 'Something went wrong' })
     }
@@ -59,7 +59,7 @@ UserRouter.delete('/delete/:id', async (req, res) => {
 
 UserRouter.patch('/update/:id', async (req, res) => {
     const { id } = req.params
-    const {  booked_slots } = req.body
+    const { booked_slots } = req.body
     try {
         const user = await User.findByIdAndUpdate(id, {
             ...req.body,
@@ -71,9 +71,9 @@ UserRouter.patch('/update/:id', async (req, res) => {
     }
 })
 
- UserRouter.post("/appointment", async (req, res) => {
-     
- })
+UserRouter.post("/appointment", async (req, res) => {
+
+})
 
 
 
