@@ -35,8 +35,9 @@ UserRouter.post('/', async (req, res) => {
 // get all users
 UserRouter.get('/users', async (req, res) => {
     try {
-        const users = await User.find()
-        res.status(200).send(users)
+        // const users = await User.find()
+        // res.status(200).send(users)
+        res.send({ message: 'User created successfully' })
     } catch (error) {
         return res.status(500).send({ message: 'Something went wrong' })
     }
