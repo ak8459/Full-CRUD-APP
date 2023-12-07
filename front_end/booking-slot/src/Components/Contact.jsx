@@ -47,23 +47,19 @@ const Contact = () => {
         setShowModal(true)
     }
 
-    const handleSubmit = () => {
-        // console.log(userData)
+    const handleSubmit = async () => {
+        console.log(userData)
 
-        // fetch("https://server-api-hofo.onrender.com/contact/users", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(userData)
-        // })
-        fetch("https://server-api-hofo.onrender.com/contact/users").then((res) => {
-            return res.json()
-        }).then((res) => {
-            console.log(res)
-        }).catch((err) => {
-            console.log(err)
+        const res = await fetch("https://server-api-hofo.onrender.com/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
         })
+        const data = await res.json()
+        console.log(data);
+
 
     }
 
